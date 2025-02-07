@@ -3,6 +3,7 @@ package ORM.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 
 import java.util.List;
 
@@ -13,15 +14,14 @@ import java.util.List;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Long id;
+    private String name;
+    private String city;
+
+    @Embedded
+    private Address address;
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders;
-
-    @Column(length = 10)
-    private String name;
-    private String city;
-    private String street;
-    private String zipcode;
-
 }

@@ -14,6 +14,7 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_id")
     private Long id;
 
     private String name;
@@ -21,6 +22,12 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<ItemCategory> itemCategories=new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private Category parent;
+
+    @OneToMany(mappedBy = "parent")
+    private List<Category> child=new ArrayList<>();
 
 
 }

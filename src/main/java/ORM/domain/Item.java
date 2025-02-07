@@ -10,6 +10,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "dtype")
 @Table(name = "item")
 public class Item {
     @Id
@@ -20,9 +22,6 @@ public class Item {
     private String name;
     private int price;
     private int stockQuantity;
-
-    @OneToMany(mappedBy = "item")
-    private List<OrderItem> orderItems=new ArrayList<>();
 
     @OneToMany(mappedBy = "item")
     private List<ItemCategory> itemCategories=new ArrayList<>();
