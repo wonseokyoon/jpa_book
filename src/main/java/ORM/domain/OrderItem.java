@@ -7,6 +7,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "orderItem")
 public class OrderItem {
 
     @Id
@@ -14,11 +15,13 @@ public class OrderItem {
     @Column(name = "orderItem_id")
     private Long id;
 
-    @Column(name = "order_id")
-    private Long orderId;
+    @ManyToOne
+    @JoinColumn(name = "orders_id")
+    private Orders orders;
 
-    @Column(name = "item_id")
-    private Long itemId;
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item itemId;
 
     private int orderPrice;
     private int count;
