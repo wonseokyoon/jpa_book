@@ -4,24 +4,23 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
-@Table(name = "member")
-public class Member {
+@Table(name = "delivery")
+public class Delivery {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "member")
-    private List<Order> orders;
+    @OneToOne(mappedBy = "delivery")
+    private Order order;
 
-    @Column(length = 10)
-    private String name;
     private String city;
     private String street;
     private String zipcode;
+    private DeliveryStatus Status;
+
 
 }
