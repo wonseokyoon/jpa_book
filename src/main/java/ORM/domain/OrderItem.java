@@ -1,13 +1,16 @@
 package ORM.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "order_item")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 
     @Id
@@ -46,9 +49,5 @@ public class OrderItem {
         return orderItem;
     }
 
-
-    /**
-     * ㅋㅋ
-     */
 
 }
