@@ -29,7 +29,7 @@ public class ItemService {
 
     // 상품 저장
     @Transactional
-    public Item save(Item item) {
+    public Item addItem(Item item) {
         return itemRepository.save(item);
     }
 
